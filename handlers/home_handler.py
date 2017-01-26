@@ -7,12 +7,13 @@ import concurrent.futures
 from tornado import gen
 from models.users_model import Users
 from models.posts_model import Posts
+from channels.posts_channel import ChatSocketHandler
 
 class Home(ApplicationHandler):
   def get(self):
     # for user in Users.select():
     #   print user.username, user.email
-    self.render("home.html", users=Users.select())
+    self.render("home.html", messages=ChatSocketHandler.cache)
 
 class SignUp(ApplicationHandler):
   def get(self):
