@@ -1,0 +1,20 @@
+{% extends "../application.html" %}
+
+{% block yield %}
+  <form action="/auth/sign_up" method="POST">
+    <fieldset>
+      <legend>Register :</legend>
+      <label>Username:</label><br>
+      <input name="username" type="text"><br>
+      <label>Email:</label><br>
+      <input name="email" type="text"><br>
+      <label>Name:</label><br>
+      <input name="name" type="text"><br>
+      <label>Password:</label><br>
+      <input name="password" type="password"><br>
+      {% module xsrf_form_html() %}
+      <br>
+      <input type="submit">
+    </fieldset>
+  </form>
+{% end %}

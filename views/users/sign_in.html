@@ -1,0 +1,19 @@
+{% extends "../application.html" %}
+
+{% block yield %}
+  <form action="/auth/sign_in" method="POST" width="100px">
+    <fieldset>
+      <legend>Login</legend>
+      {% if error %}
+        <span style="color: red">Error : {{ error }}</span><p>
+      {% end %}
+      <label>Email :</label><br> 
+      <input name="email" type="text"><br>
+      <label>Password :</label><br>
+      <input name="password" type="password"><br>
+      {% module xsrf_form_html() %}
+      <br>
+      <input type="submit">
+    </fieldset>
+  </form>
+{% end %}

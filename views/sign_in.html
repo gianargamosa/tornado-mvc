@@ -1,0 +1,16 @@
+{% extends "application.html" %}
+
+{% block yield %}
+  <form action="/sign_in" method="POST">
+    <fieldset>
+      <legend>Register :</legend>
+      <label>Username:</label><br>
+      <input name="username" type="text"><br>
+      <label>Password:</label><br>
+      <input name="password" type="password"><br>
+      {% module xsrf_form_html() %}
+      <br>
+      <input type="submit">
+    </fieldset>
+  </form>
+{% end %}

@@ -1,0 +1,7 @@
+{% extends "application.html" %}
+
+{% block yield %}
+  {% for user in users %}
+    {{ user.username }}
+  {% end %}
+{% end %}
