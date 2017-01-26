@@ -7,6 +7,7 @@ import os
 import tornado.options
 import concurrent.futures
 from handlers import *
+from channels import *
 
 settings = dict(
   template_path=os.path.join(os.path.dirname(__file__), "views"),
@@ -20,6 +21,7 @@ settings = dict(
 def make_app():
   return tornado.web.Application([
     (r"/", Home),
+    (r"/chatsocket", ChatSocketHandler),
     (r"/sign_up", SignUp),
     (r"/sign_out", SignOut),
     (r"/sign_in", SignIn),
