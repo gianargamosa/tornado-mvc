@@ -21,12 +21,10 @@ settings = dict(
 def make_app():
   return tornado.web.Application([
     (r"/", Home),
-    (r"/chatsocket", ChatSocketHandler),
-    (r"/sign_up", SignUp),
-    (r"/sign_out", SignOut),
-    (r"/sign_in", SignIn),
-    (r"/auth/sign_up", SignUpHandler),
-    (r"/auth/sign_in", SignInHandler),
+    (r"/chatsocket", PostsChannel),
+    (r"/users/sign_up", SignUp),
+    (r"/users/sign_out", SignOut),
+    (r"/users/sign_in", SignIn),
   ], **settings)
 
 if __name__ == "__main__":

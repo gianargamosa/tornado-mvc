@@ -8,6 +8,13 @@
   </head>
   <body>
     <div id="body">
+      {% if current_user %}
+        <a href="/">Home</a> &middot;
+        <a href="/users/{{ current_user.username }}">{{ current_user.username }}</a> &middot;
+        <a href="/users/sign_out?next={{ url_escape(request.uri) }}">{{ _("Sign out") }}</a>
+      {% else %}
+        {% raw _('<a href="%(url)s">Sign in</a>') % {"url": "/users/sign_in?next=" + url_escape(request.uri)} %}
+      {% end %}
       <div id="content">
         {% block yield %}{% end %}
       </div>

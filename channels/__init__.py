@@ -1,1 +1,1 @@
-from posts_channel import ChatSocketHandler 
+from posts_channel import PostsChannel

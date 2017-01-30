@@ -1,7 +1,14 @@
 {% extends "application.html" %}
 
 {% block yield %}
-  <form action="/sign_in" method="POST">
+  {% if errors %}
+    <ul class="flash-error">
+      {% for index, error in enumerate(errors) %}
+        <li><span style="color: red">{{ error }}</span></li>
+      {% end %}
+    </ul>
+  {% end %}
+  <form action="/users/sign_in" method="POST">
     <fieldset>
       <legend>Register :</legend>
       <label>Username:</label><br>

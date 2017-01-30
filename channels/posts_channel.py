@@ -7,7 +7,7 @@ import logging
 import uuid
 
 
-class ChatSocketHandler(tornado.websocket.WebSocketHandler):
+class PostsChannel(tornado.websocket.WebSocketHandler):
     waiters = set()
     cache = []
     cache_size = 200
@@ -17,10 +17,10 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
         return {}
 
     def open(self):
-        ChatSocketHandler.waiters.add(self)
+        PostsChannel.waiters.add(self)
 
     def on_close(self):
-        ChatSocketHandler.waiters.remove(self)
+        PostsChannel.waiters.remove(self)
 
     @classmethod
     def update_cache(cls, chat):
@@ -47,5 +47,5 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
         chat["html"] = tornado.escape.to_basestring(
             self.render_string("message.html", message=chat))
 
-        ChatSocketHandler.update_cache(chat)
-        ChatSocketHandler.send_updates(chat)
+        PostsChannel.update_cache(chat)
+        PostsChannel.send_updates(chat)

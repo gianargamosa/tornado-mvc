@@ -1,4 +1,12 @@
 html {
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
+}
+
+ul.flash-error {
+	padding-left: 0;
+}
+
+ul.scrums {
+	padding-left: 0;
 }

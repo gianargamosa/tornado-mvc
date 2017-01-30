@@ -7,4 +7,3 @@ class Posts(MySQLModel):
   user_id = CharField()
   body = TextField()
   stamp = DateTimeField()
-  password = CharField()

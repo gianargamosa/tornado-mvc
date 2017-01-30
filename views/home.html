@@ -2,13 +2,8 @@
 
 {% block yield %}
   <div id="body">
-    <div id="inbox">
-      {% for message in messages %}
-        {% include "message.html" %}
-      {% end %}
-    </div>
     <div id="input">
-      <form action="/a/message/new" method="post" id="messageform">
+      <form action="" method="post" id="messageform">
         <table>
           <tr>
             <td><input name="body" id="message" style="width:500px"></td>
@@ -21,5 +16,17 @@
         </table>
       </form>
     </div>
+    <div id="inbox">
+      {% for message in messages %}
+        {% include "message.html" %}
+      {% end %}
+    </div>
+    <ul class="scrums">
+      {% for post in posts %}
+        <li>
+          {{ post.user_id }} {% module linkify(post.body) %} {{ locale.format_date(post.stamp, full_format=True, shorter=True) }}
+        </li>
+      {% end %}
+    </ul>
   </div>
 {% end %}
