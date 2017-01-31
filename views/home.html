@@ -1,32 +1,52 @@
 {% extends "application.html" %}
-
 {% block yield %}
-  <div id="body">
-    <div id="input">
-      <form action="" method="post" id="messageform">
-        <table>
-          <tr>
-            <td><input name="body" id="message" style="width:500px"></td>
-            <td style="padding-left:5px">
-              <input type="submit" value="{{ _("Post") }}">
-              <input type="hidden" name="next" value="{{ request.path }}">
-              {% module xsrf_form_html() %}
-            </td>
-          </tr>
-        </table>
-      </form>
+  <div class="container" id="body">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <ul class="list-group scrums" id="inbox">
+          <li class="list-group-item" id="input">
+              <form action="" method="post" id="messageform">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object img-rounded" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTlmMjkxMTJkYyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1OWYyOTExMmRjIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi4xODc1IiB5PSIzNi42NjQwNjI1Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="..." width="42px" height="42px">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <textarea class="form-control text-editor" name="body" id="message" rows="2" placeholder="What's happening?"></textarea>
+                    <button class="btn btn-sm btn-default pull-right" type="submit">
+                      <span class="icon icon-basic-book-pen"></span> Publish
+                    </button>
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    {% module xsrf_form_html() %}
+                  </div>
+                </div>
+              </form>
+          </li>
+          {% for message in messages %}
+            {% include "message.html" %}
+          {% end %}
+          {% for post in posts %}
+            <li class="list-group-item">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object img-rounded" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTlmMjkxMTJkYyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1OWYyOTExMmRjIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi4xODc1IiB5PSIzNi42NjQwNjI1Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="..." width="47px" height="47px">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <div class="icon icon-arrows-circle-down pull-right"></div>
+                  <a class="media-heading">{{ post.user_id }}</a><br>
+                  {% module linkify(post.body) %}<br>
+                  {{ locale.format_date(post.stamp, full_format=True, shorter=True) }}
+                </div>
+              </div>
+            </li>
+          {% end %}
+        </ul>
+      </div>
+      <div class="col-md-3"></div>
     </div>
-    <div id="inbox">
-      {% for message in messages %}
-        {% include "message.html" %}
-      {% end %}
-    </div>
-    <ul class="scrums">
-      {% for post in posts %}
-        <li>
-          {{ post.user_id }} {% module linkify(post.body) %} {{ locale.format_date(post.stamp, full_format=True, shorter=True) }}
-        </li>
-      {% end %}
-    </ul>
   </div>
 {% end %}

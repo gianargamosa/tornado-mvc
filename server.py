@@ -21,6 +21,7 @@ settings = dict(
 def make_app():
   return tornado.web.Application([
     (r"/", Home),
+    (r"/settings", Users),
     (r"/chatsocket", PostsChannel),
     (r"/users/sign_up", SignUp),
     (r"/users/sign_out", SignOut),

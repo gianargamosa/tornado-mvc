@@ -62,7 +62,9 @@ var updater = {
         if (existing.length > 0) return;
         var node = $(message.html);
         node.hide();
-        $("#inbox").append(node);
+        // $("#inbox").append(node);
+        $('ul.scrums li:nth-child(2)').before(node);
+        $("ul.scrums:empty").append(node);
         node.slideDown();
     }
 };

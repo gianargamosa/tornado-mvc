@@ -1,6 +1,6 @@
 mysql:
   host: localhost
   user: root
-  passwd: ""
+  passwd: th3sad0n3
   db: friendfeed
   ports: 8000

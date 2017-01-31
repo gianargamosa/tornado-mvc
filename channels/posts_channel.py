@@ -5,7 +5,7 @@ import tornado.web
 import tornado.websocket
 import logging
 import uuid
-
+from handlers.base_handler import ApplicationHandler, executor
 
 class PostsChannel(tornado.websocket.WebSocketHandler):
     waiters = set()
@@ -17,9 +17,11 @@ class PostsChannel(tornado.websocket.WebSocketHandler):
         return {}
 
     def open(self):
+        # self.cache.append("")
         PostsChannel.waiters.add(self)
 
     def on_close(self):
+        # self.cache.append("")
         PostsChannel.waiters.remove(self)
 
     @classmethod
@@ -42,6 +44,7 @@ class PostsChannel(tornado.websocket.WebSocketHandler):
         parsed = tornado.escape.json_decode(message)
         chat = {
             "id": str(uuid.uuid4()),
+            "user_id": 1,
             "body": parsed["body"],
             }
         chat["html"] = tornado.escape.to_basestring(

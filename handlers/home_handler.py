@@ -17,7 +17,9 @@ class Home(ApplicationHandler):
       self.redirect("/users/sign_in")
     list_of_id = "1, 2, 3"
     posts = Posts.select().where(Posts.user_id << list_of_id.split(',')).order_by(Posts.id.desc())
-    print len(posts)
+    scrums=[]
+    for post in Posts.select().where(Posts.user_id << list_of_id.split(',')).order_by(Posts.id.desc()):
+      scrums.append(post.body)
     self.render("home.html", messages=PostsChannel.cache, posts=posts)
 
 class SignUp(ApplicationHandler):
