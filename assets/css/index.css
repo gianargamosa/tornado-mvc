@@ -11,6 +11,15 @@ ul.scrums {
 	padding-left: 0;
 }
 
+ul.tools {
+  margin-top: 5px;
+}
+
+ul.tools li span {
+  font-size: 18px;
+  color: #555555;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 * {

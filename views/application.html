@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ static_url("css/index.css") }}" type="text/css">
     <link rel="stylesheet" href="{{ static_url("css/bootstrap.css") }}" type="text/css">
     <link rel="stylesheet" href="{{ static_url("css/linea/basic.css") }}" type="text/css">
+    <link rel="stylesheet" href="{{ static_url("css/typicons/typicons.css") }}" type="text/css">
+    <!-- <link rel="stylesheet" href="{{ static_url("css/linea/basic.css") }}" type="text/css"> -->
     {% block head %}{% end %}
   </head>
   <body>
@@ -23,10 +25,10 @@
         <div id="navbar" class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
             {% if current_user %}
-              <li class="active"><a href="/"><span class="notification-count">1</span><span class="icon icon-basic-alarm icon-navigation notification"></span></a></li>
+              <li class="active"><a href="/"><span class="notification-count">0</span><span class="typcn typcn-bell" style="font-size: 28px;"></span></a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle profile-pic" id="drop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <img alt="Brand" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTlmMjkxMTJkYyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1OWYyOTExMmRjIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi4xODc1IiB5PSIzNi42NjQwNjI1Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" width="32px" height="32px" style="margin-top: -7px;">
+                  <img alt="Brand" class="img-rounded" src="{{ static_url("images/2jq842IH_bigger.jpg") }}" width="32px" height="32px" style="margin-top: -7px;">
                 </a>
               
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="drop1">

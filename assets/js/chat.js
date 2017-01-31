@@ -65,6 +65,8 @@ var updater = {
         // $("#inbox").append(node);
         $('ul.scrums li:nth-child(2)').before(node);
         $("ul.scrums:empty").append(node);
+        var count=0;
+        $(".notification-count").text(count++);
         node.slideDown();
     }
 };
