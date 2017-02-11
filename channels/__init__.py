@@ -1,1 +1,0 @@
-from posts_channel import PostsChannel
