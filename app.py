@@ -28,7 +28,7 @@ if __name__ == "__main__":
   app = make_app()
   app.listen(8500)
   tornado.options.parse_command_line()
-  print '=> Booting Acorn'
+  print '=> Booting Gradle'
   print '=> Application started in '+ cfg['ENV']['APP_ENV'] +' on '+ cfg['ENV']['APP_URL'] +':%s/' % 8000
   print '=> Run `python server.py -h` for more startup options'
   tornado.ioloop.IOLoop.current().start()

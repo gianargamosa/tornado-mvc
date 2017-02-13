@@ -8,12 +8,15 @@ html {
 body {
   background-color: #EFEFEF;
   color: #2E2F30;
-  text-align: center;
   font-family: arial, sans-serif;
   margin: 0;
 }
 
-div.dialog {
+ul {
+  padding: 0;
+}
+
+/*div.dialog {
   width: 95%;
   max-width: 33em;
   margin: 4em auto 0;
@@ -51,4 +54,4 @@ div.dialog > p {
   border-top-color: #DADADA;
   color: #666;
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-}
+}*/

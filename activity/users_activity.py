@@ -6,4 +6,4 @@ class Main(MainActivity):
     users = Users.select()
     for user in users:
       print user.username
-    self.render('main.html')
+    self.render("main.jsx", title="Gradle Todo Application")
