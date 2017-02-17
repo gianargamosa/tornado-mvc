@@ -1,8 +1,6 @@
 import json
 import traceback
-
 from tornado import web, options, ioloop
-
 
 class MyAppBaseHandler(web.RequestHandler):
     def write_error(self, status_code, **kwargs):
@@ -39,7 +37,6 @@ class AgeHandler(MyAppBaseHandler):
 
 
 class MyApplication(web.Application):
-
     def __init__(self, **kwargs):
         kwargs['handlers'] = [
             web.url(r'/', AgeHandler, name='age'),
