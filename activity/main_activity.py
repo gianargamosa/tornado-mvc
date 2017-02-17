@@ -4,20 +4,12 @@ import concurrent.futures
 
 executor = concurrent.futures.ThreadPoolExecutor(2)
 
-class MainActivity(tornado.web.RequestHandler):
-  
-  def get_current_user(self):
-    username = self.get_secure_cookie("user")
-    user = None
-    if username:
-      user = Users.get(Users.username == username)
-    return user
-      
-  def any_user_exists(self):
-    return bool(Users.get().limit(1))
+class GradleActivity(tornado.web.RequestHandler):
+  def __init__(self, application, request, **kwargs):
+    super(GradleActivity, self).__init__(application, request)
 
-  def get_object_or_404(model, *expressions):
-    try:
-      return model.get(*expressions)
-    except model.DoesNotExist:
-      abort(404)
+  def write_error(self, status_code, **kwargs):
+    if status_code == 404:
+      self.render('errors/404.html',page=None)
+    else:
+      self.render('errors/unknown.html',page=None)
